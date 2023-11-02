@@ -18,6 +18,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
 </head>
 
 <body>
@@ -26,13 +29,69 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">Robotic Task Generalization via Hindsight Trajectory Sketches</h1>
-            <br>
-            <figure class="image is-16by9">
+            <h1 class="title is-1 publication-title"><b>RT-Trajectory</b>: Robotic Task Generalization via Hindsight Trajectory Sketches</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://jiayuan-gu.github.io/">Jiayuan Gu</a><sup>1,2</sup>,
+              </span>
+              <span class="author-block">Sean Kirmani<sup>1</sup>,</span>
+              <span class="author-block">Paul Wohlhart<sup>1</sup>,</span>
+              <span class="author-block">Yao Lu<sup>1</sup>,</span>
+              <span class="author-block">Montserrat Gonzalez Arenas<sup>1</sup>,</span>
+              <span class="author-block">Kanishka Rao<sup>1</sup>,</span>
+              <br>
+              <span class="author-block">Wenhao Yu<sup>1</sup>,</span>
+              <span class="author-block">Chuyuan Fu<sup>1</sup>,</span>
+              <span class="author-block">Keerthana Gopalakrishnan<sup>1</sup>,</span>
+              <span class="author-block">Zhuo Xu, Priya Sundaresan<sup>1</sup>,</span>
+              <span class="author-block">Peng Xu<sup>1</sup>,</span>
+              <br>
+              <span class="author-block"><a href="https://cseweb.ucsd.edu/~haosu/">Hao Su</a><sup>2</sup>,</span>
+              <span class="author-block"><a href="https://karolhausman.github.io/">Karol Hausman</a><sup>1</sup>,</span>
+              <span class="author-block"><a href="https://ai.stanford.edu/~cbfinn/">Chelsea Finn</a><sup>1</sup>,</span>
+              <span class="author-block"><a href="https://quanvuong.github.io/">Quan Vuong</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://tedxiao.me/">Ted Xiao</a><sup>1</sup>
+              </span>
+            </div>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>Google DeepMind</span>,
+              <span class="author-block"><sup>2</sup>University of California San Diego</span>
+            </div>
+          </div>
+        </div>
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                  <span>Paper</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="columns is-centered">
+          <div class="column is-6 has-text-centered">
+            <!-- <figure class="image is-16by9">
               <iframe class="has-ratio" width="560" height="315" src="https://www.youtube.com/embed/uYu_HOtQDn4" frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowfullscreen></iframe>
+            </figure> -->
+            <figure class="image">
+              <img src="static/img/[RT-T] Chat UI.gif" alt="Animation for RT-T">
             </figure>
+          </div>
+        </div>
+        <div class="columns is-centered">
+          <div class="column is-9 has-text-centered">
+            <div class="content has-text-justified is-size-6">
+              <p>
+                Languaged-conditioned policies like <a href="https://robotics-transformer1.github.io/">RT-1</a> struggle to generalize to new scenarios that require extrapolation of language specification. To this end, we propose <b>RT-Trajectory</b>, a robotic control policy conditioned on trajectory sketches, which is practical, easy to specify, and allow the policy to effectively perform new tasks beyond training data.
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -40,7 +99,7 @@
   </section>
 
   <section class="section">
-    <div class="container is-max-desktop">
+    <div class="container is-max-widescreen">
       <div class="columns is-centered">
         <div class="column is-four-fifths has-text-centered">
           <h2 class="title is-3">Abstract</h2>
@@ -55,12 +114,14 @@
   </section>
 
   <section class="section">
-    <div class="container is-max-desktop">
+    <div class="container is-max-widescreen">
       <div class="columns is-centered">
         <div class="column is-four-fifths has-text-centered">
           <h2 class="title is-3">Overview</h2>
+          <figure class="image">
+            <img src="static/img/[RT-T] Architecture v3.png" alt="Overview">
+          </figure>
           <div class="content has-text-justified">
-            <img class="image" src="static/img/[RT-T] Architecture.png" alt="Overview">
             <p>
               We propose <b>RT-Trajectory</b>, which utilizes coarse trajectory sketches for policy conditioning. We train on hindsight trajectory sketches (top left) and evaluate on inference trajectories (bottom left) produced via <i>Trajectory Drawings</i>, <i>Human Videos</i>, or <i>Foundation Models</i>. These trajectory sketches are used as task specification for an RT-1 policy backbone (right).
             </p>
@@ -71,7 +132,7 @@
   </section>
   
   <section class="section">
-    <div class="container is-max-desktop">
+    <div class="container is-max-widescreen">
       <h2 class="title is-3 has-text-centered">For Training: Hindsight Trajectory Labels</h2>
       <div class="columns is-centered">
         <div class="column is-5 has-text-centered">
@@ -135,7 +196,7 @@
       </div>
     </div>
 
-    <div class="container is-max-desktop">
+    <div class="container is-max-widescreen">
       <h3 class="subtitle is-4 has-text-centered">Seen Skills</h2>
       <div class="columns is-centered">
         <div class="column is-four-fifths">
@@ -201,7 +262,7 @@
   </section>
 
   <section class="section">
-    <div class="container is-max-desktop">
+    <div class="container is-max-widescreen">
       <div class="columns is-centered">
         <div class="column is-four-fifths has-text-centered">
           <h2 class="title is-3">For Inference: Human Drawings</h2>
@@ -529,7 +590,7 @@
             </ul>
           </div>
 
-          <img class="image" src="static/img/quantitative-unseen-tasks.png" alt="Quantitative results for unseen skills">
+          <img class="image" src="static/img/quantitative-unseen-tasks-reordered.png" alt="Quantitative results for unseen skills">
           <div class="content is-size-6 has-text-justified"><b>Caption:</b> Success rates for unseen tasks when conditioning with human-drawn sketches. Scenarios contain a variety of difficult settings which require combining seen motions in novel ways or generalizing to new motions. Each policy is evaluated for a total of 64 trials across 7 different scenarios.</div>
           
           <div class="content has-text-justified">
@@ -546,7 +607,7 @@
   </section>
 
   <section class="section" id="human-hand-demo">
-    <div class="container is-max-desktop">
+    <div class="container is-max-widescreen">
       <div class="columns is-centered">
         <div class="column is-four-fifths has-text-centered">
           <h2 class="title is-3">For Inference: Human Demonstration Videos with Hand-object Interaction</h2>
@@ -732,7 +793,7 @@
   </section>
 
   <section class="section">
-    <div class="container is-max-desktop">
+    <div class="container is-max-widescreen">
       <div class="columns is-centered">
         <div class="column is-four-fifths has-text-centered">
           <h2 class="title is-3">For Inference: Prompting LLMs with Code as Policies</h2>
@@ -899,7 +960,7 @@ robot_api.follow_arm_trajectory([open_drawer_pose], allow_base_moves=True)</code
   </section>
 
   <section class="section">
-    <div class="container is-max-desktop">
+    <div class="container is-max-widescreen">
       <div class="columns is-centered">
         <div class="column is-four-fifths has-text-centered">
           <h2 class="title is-3">For Inference: Image Generation Models</h2>
@@ -967,7 +1028,7 @@ robot_api.follow_arm_trajectory([open_drawer_pose], allow_base_moves=True)</code
   </section>
 
   <section class="section">
-    <div class="container is-max-desktop">
+    <div class="container is-max-widescreen">
       <div class="columns is-centered">
         <div class="column is-four-fifths has-text-centered">
           <h2 class="title is-3">Case Studies</h2>
@@ -1027,7 +1088,7 @@ robot_api.follow_arm_trajectory([open_drawer_pose], allow_base_moves=True)</code
   </section>
 
   <section class="section">
-    <div class="container is-max-desktop">
+    <div class="container is-max-widescreen">
       <div class="columns is-centered">
         <div class="column is-four-fifths has-text-centered">
           <h2 class="title is-3">More Qualitative Results</h2>
