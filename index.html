@@ -90,7 +90,7 @@
           <div class="column is-9 has-text-centered">
             <div class="content has-text-justified is-size-6">
               <p>
-                Languaged-conditioned policies like <a href="https://robotics-transformer1.github.io/">RT-1</a> struggle to generalize to new scenarios that require extrapolation of language specification. To this end, we propose <b>RT-Trajectory</b>, a robotic control policy conditioned on trajectory sketches, which is practical, easy to specify, and allow the policy to effectively perform new tasks beyond training data.
+                Language-conditioned policies like <a href="https://robotics-transformer1.github.io/">RT-1</a> struggle to generalize to new scenarios that require extrapolation of language specifications. To this end, we propose <b>RT-Trajectory</b>, a robotic control policy conditioned on trajectory sketches: a novel conditioning method which is practical, easy to specify, and allows effective generalization to novel tasks beyond the training data.
               </p>
             </div>
           </div>
@@ -106,7 +106,7 @@
           <h2 class="title is-3">Abstract</h2>
           <div class="content has-text-justified">
             <p>
-              Generalization remains one of the most important desiderata for robust robot learning systems. While recently proposed approaches show promise in generalization to novel objects, semantic concepts, or visual distribution shifts, generalization to new tasks remains challenging. For example, a language-conditioned policy trained on pick-and-place tasks will not be able to generalize to a folding task, even if the arm trajectory of folding is similar to pick-and-place. Our key insight is that this kind of generalization becomes feasible if we represent the task through rough trajectory sketches. We propose a policy conditioning method using such rough trajectory sketches, which we call <b>RT-Trajectory</b>, that is practical, easy to specify, and allows the policy to effectively perform new tasks that would otherwise be challenging to perform. We find that trajectory sketches strike a balance between being detailed enough to express low-level motion-centric guidance while being coarse enough to allow the learned policy to interpret the trajectory sketch in the context of situational visual observations. In addition, we show how trajectory sketches can provide a useful interface to communicate with robotic policies -- they can be specified through simple human inputs like drawings or videos, or through automated methods such as modern image-generating or waypoint-generating methods. We evaluate <b>RT-Trajectory</b> at scale on a variety of real-world robotic tasks, and find that <b>RT-Trajectory</b> is able to perform a wider range of tasks compared to language-conditioned and goal-conditioned policies, when provided the same training data.
+              Generalization remains one of the most important desiderata for robust robot learning systems. While recently proposed approaches show promise in generalization to novel objects, semantic concepts, or visual distribution shifts, generalization to new tasks remains challenging. For example, a language-conditioned policy trained on pick-and-place tasks will not be able to generalize to a folding task, even if the arm trajectory of folding is similar to pick-and-place. Our key insight is that this kind of generalization becomes feasible if we represent the task through rough trajectory sketches. We propose a policy conditioning method using such rough trajectory sketches, which we call <b>RT-Trajectory</b>, that is practical, easy to specify, and allows the policy to effectively perform new tasks that would otherwise be challenging to perform. We find that trajectory sketches strike a balance between being detailed enough to express low-level motion-centric guidance while being coarse enough to allow the learned policy to interpret the trajectory sketch in the context of situational visual observations. In addition, we show how trajectory sketches can provide a useful interface to communicate with robotic policies -- they can be specified through simple human inputs like drawings or videos, or through automated methods such as modern image-generating or waypoint-generating methods, such as with VLMs or LLMs. We evaluate <b>RT-Trajectory</b> at scale on a variety of real-world robotic tasks, and find that <b>RT-Trajectory</b> is able to perform a wider range of tasks compared to language-conditioned and goal-conditioned policies, when provided the same training data.
             </p>
           </div>
         </div>
@@ -162,7 +162,7 @@
             <source src="static/video/hindsight_trajectory_labels/trajectory-label-time-aware.mp4" type="video/mp4">
           </video>
           <div class="content">
-            To express relative temporal motion, which encodes such as velocity and direction, we also explore using the red channel of the trajectory image to specify the normalized time step.
+            To express relative temporal motion, which encodes properties such as velocity and direction, we also explore using the red channel of the RGB trajectory image to specify the normalized time step.
           </div>
         </div>
         <div class="column is-5">
@@ -170,7 +170,7 @@
             <source src="static/video/hindsight_trajectory_labels/trajectory-label-height-aware.mp4" type="video/mp4">
           </video>
           <div class="content">
-            Additionally, we propose incorporating height information into the trajectory representation by utilizing the green channel of the trajectory image to encode normalized height.
+            Additionally, we propose incorporating height information into the trajectory representation by utilizing the green channel of the RGB trajectory image to encode normalized height.
           </div>
         </div>
       </div>
@@ -178,7 +178,7 @@
       <h3 class="subtitle is-4 has-text-centered">Trajectory Representations</h2>
       <div class="columns is-centered">
         <div class="column is-four-fifths">
-          We propose two forms of trajectory representation from different combinations of the basic elements: <b>RT-Trajectory (2D)</b> and <b>RT-Trajectory (2.5D)</b>. Here are two example trajectory sketches.
+          We propose two forms of trajectory representation which are composed of the basic elements described above: <b>RT-Trajectory (2D)</b> and <b>RT-Trajectory (2.5D)</b>. Here are two example trajectory sketches:
         </div>
       </div>
       <div class="columns is-centered">
@@ -201,7 +201,7 @@
       <h3 class="subtitle is-4 has-text-centered">Seen Skills</h2>
       <div class="columns is-centered">
         <div class="column is-four-fifths">
-          We use the <a href="https://robotics-transformer1.github.io/">RT-1</a> demonstration dataset for training, which contains 542 instructions inspired by an office kitchen setting. The language instructions consist of 8 different manipulation skills operating on a set of 17 household kitchen items; in total, the dataset consists of 73,334 real robot demonstrations across these 542 seen tasks, which were collected by manual teleoperation.
+          We use the <a href="https://robotics-transformer1.github.io/">RT-1</a> demonstration dataset for training, which contains 551 instructions inspired by an office kitchen setting. The language instructions consist of 8 different manipulation skills operating on a set of 17 household kitchen items; in total, the dataset consists of 73,334 real robot demonstrations across these 551 training tasks, which were collected by manual teleoperation.
         </div>
       </div>
       <div class="columns is-centered">
@@ -269,7 +269,7 @@
           <h2 class="title is-3">For Inference: Human Drawings</h2>
           <div class="content has-text-justified">
             <p>
-              Human-drawn sketches are an intuitive and practical way to generate trajectory sketches at inference time. To scalably produce these sketches during evaluations, we design a simple UI for users to draw trajectory sketches given the robot's initial camera image.
+              Human-drawn sketches are an intuitive and practical way to generate trajectory sketches at inference time. To scalably produce these sketches during evaluations, we design a simple GUI for users to draw trajectory sketches given the robot's initial camera image.
             </p>
             <img class="image" src="static/img/human_drawing_ui_v2.png" alt="human drawing UI">
           </div>
@@ -281,7 +281,7 @@
           <h3 class="subtitle is-4">Unseen Skills</h3>
           <div class="content has-text-justified">
             <p>
-              We propose 7 new skills for evaluation which include unseen objects and manipulation workspaces, to study whether <b>RT-Trajectory</b> can generalize to tasks beyond those contained in the training dataset.
+              We propose 7 new skills for evaluation which involve unseen objects, manipulation workspaces, and novel motions, to study whether <b>RT-Trajectory</b> can generalize to tasks beyond those contained in the training dataset.
               <!-- <strong>For each video below, the left side is the policy rollout, and the right side is the trajectory sketch overlaid on the rollout.</strong> -->
               The skill <span class="tt">Fold Towel</span> is shown in the <a href="#human-hand-demo">Human Demonstration</a> section.
             </p>
@@ -343,7 +343,7 @@
             <h4 class="title is-5">Upright and Move</h4>
           </div>
           <div class="has-text-justified">
-            <span class="tt">Upright and Move</span> examine whether the policy can combine different seen skills (<span class="tt">Place Upright</span> and <span class="tt">Move Near</span>) to form a new skill.
+            <span class="tt">Upright and Move</span> examine whether the policy can combine distinct seen skills (<span class="tt">Place Upright</span> and <span class="tt">Move Near</span>) to form a new skill.
           </div>
           <div class="carousel results-carousel">
             <div class="item">
@@ -386,7 +386,7 @@
             <h4 class="title is-5">Move within Drawer</h4>
           </div>
           <div class="has-text-justified">
-            <span class="tt">Move within Drawer</span> studies whether the policy is able to move objects within the drawer while the seen skill <span class="tt">Move Near</span> only covers those motions at height of the tabletop.
+            <span class="tt">Move within Drawer</span> studies whether the policy is able to move objects within the drawer while the seen skill <span class="tt">Move Near</span> only covers those motions at a fixed tabletop height.
           </div>
           <div class="carousel results-carousel">
             <div class="item">
@@ -424,7 +424,7 @@
             <h4 class="title is-5">Restock Drawer</h4>
           </div>
           <div class="has-text-justified">
-            <span class="tt">Restock Drawer</span> requires the robot to place snacks into the drawer at an empty slot. It studies whether the policy is able to place objects at target positions precisely.
+            <span class="tt">Restock Drawer</span> requires the robot to place snacks into the drawer at a precise empty slot. It studies whether the policy is able to place objects at target positions precisely.
           </div>
           <div class="carousel results-carousel">
             <div class="item">
@@ -542,7 +542,7 @@
             <h4 class="title is-5">Swivel Chair</h4>
           </div>
           <div class="has-text-justified">
-            <span class="tt">Swivel Chair</span> showcase the capability to interact with an underactuated system.
+            <span class="tt">Swivel Chair</span> showcase the capability to interact with an underactuated system at a novel height with a novel motion.
           </div>
           <div class="carousel results-carousel">
             <div class="item">
@@ -592,13 +592,13 @@
           </div>
 
           <img class="image" src="static/img/quantitative-unseen-tasks-reordered.png" alt="Quantitative results for unseen skills">
-          <div class="content is-size-6 has-text-justified"><b>Caption:</b> Success rates for unseen tasks when conditioning with human-drawn sketches. Scenarios contain a variety of difficult settings which require combining seen motions in novel ways or generalizing to new motions. Each policy is evaluated for a total of 64 trials across 7 different scenarios.</div>
+          <div class="content is-size-6 has-text-justified"><b>Caption:</b> Success rates for unseen tasks when conditioning with human-drawn trajectory sketches. Scenarios contain a variety of difficult settings which require combining seen motions in novel ways or generalizing to new motions. Each policy is evaluated for a total of 64 trials across 7 different scenarios.</div>
           
           <div class="content has-text-justified">
             <p>
               Language-conditioned policies struggle to generalize to the new tasks with semantically unseen language instructions, even if motions to achieve these tasks were seen during training.
               <b>RT-1-goal</b> shows better generalization than its language-conditioned counterparts. However, goal conditioning is much harder to acquire than trajectory sketches during inference in new scenes and is sensitive to task-irrelevant factors (e.g., backgrounds).
-              <b>RT-Trajectory (2.5D)</b> outperforms <b>RT-Trajectory (2D)</b> on the tasks where height information helps reduce ambiguity. For example, with 2D trajectories only, it is difficult for <b>RT-Trajectory (2D)</b> to infer correct picking height, which is critical for <span class="tt">Pick from Chair</span>.
+              <b>RT-Trajectory (2.5D)</b> outperforms <b>RT-Trajectory (2D)</b> on the tasks where height information helps reduce ambiguity. For example, with 2D trajectories only, it is difficult for <b>RT-Trajectory (2D)</b> to infer correct picking heights, which is critical for the <span class="tt">Pick from Chair</span> evaluations.
             </p>
           </div>
         </div>
@@ -685,7 +685,7 @@
           </div>
           <div class="content has-text-justified">
             <p>
-              <b>Caption:</b> Each visualization shows the human demonstration (left), the <b>RT-Trajectory</b> policy rollout (middle), and the trajectory sketch overlaid on the rollout (right).
+              <b>Caption:</b> Each visualization shows the human video demonstration (left), the <b>RT-Trajectory</b> policy rollout (middle), and the trajectory sketch overlaid on the rollout (right).
             </p>
           </div>
         </div>
@@ -811,7 +811,7 @@
         <div class="column is-four-fifths has-text-centered">
           <div class="content has-text-justified">
             <p>
-              Take <span class="tt">Open Drawer</span> for example. We first detect the objects of interests (drawer handle) by a visual-language model (VLM). Then, we prompt GPT-4 to write code to generate trajectories given the task instructions (open the top drawer) and object poses as well as object sizes.
+              For instance, consider the  <span class="tt">Open Drawer</span> task. We first detect the objects of interests (ie. a drawer handle) by a visual-language model (VLM). Then, we prompt GPT-4 to write code to generate trajectories given the task instructions ("open the top drawer") and object poses as well as object sizes.
             </p>
           </div>
         </div>
@@ -1061,7 +1061,7 @@ robot_api.follow_arm_trajectory([open_drawer_pose], allow_base_moves=True)</code
           <h3 class="subtitle is-4">Height-aware Behaviors</h3>
           <div class="content has-text-justified">
             <p>
-              2D trajectories (without depth information) are visually ambiguous for distinguishing whether the robot should move its arm to a deeper or higher.  We find that height-aware color grading for <b>RT-Trajectory (2.5D)</b> can effectively help reduce such ambiguity.
+              2D trajectories (without depth information) are visually ambiguous for distinguishing whether the robot should move its arm to a deeper or higher location.  We find that height-aware color grading utilized in <b>RT-Trajectory (2.5D)</b> can effectively help reduce such ambiguity.
             </p>
           </div>
         </div>
@@ -1073,7 +1073,7 @@ robot_api.follow_arm_trajectory([open_drawer_pose], allow_base_moves=True)</code
             <source src="static/video/height_aware/pick_blue_protein_bar.02.plain.mp4" type="video/mp4">
           </video>
           <div class="cotent">
-            <b>RT-Trajectory (2D)</b> moves the object to a deeper position due to the ambiguity of a 2D trajectory.
+            <b>RT-Trajectory (2D)</b> incorrectly moves the object to a deeper position due to the ambiguity of a 2D trajectory.
           </div>
         </div>
         <div class="column is-four-fifths has-text-centered">
@@ -1081,7 +1081,7 @@ robot_api.follow_arm_trajectory([open_drawer_pose], allow_base_moves=True)</code
             <source src="static/video/height_aware/pick_blue_protein_bar.02.height-aware.mp4" type="video/mp4">
           </video>
           <div class="cotent">
-            <b>RT-Trajectory (2.5D)</b> lifts the object.
+            <b>RT-Trajectory (2.5D)</b> correctly lifts the object.
           </div>
         </div>
       </div>
