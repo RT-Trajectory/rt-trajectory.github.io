@@ -76,20 +76,33 @@
             </div>
           </div>
         </div>
-        <div class="columns is-centered">
+        <div class="columns is-centered is-vcentered">
           <div class="column is-6 has-text-centered">
             <!-- <figure class="image is-16by9">
               <iframe class="has-ratio" width="560" height="315" src="https://www.youtube.com/embed/uYu_HOtQDn4" frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowfullscreen></iframe>
             </figure> -->
-            <figure class="image">
-              <img src="static/img/[RT-T] Chat UI.gif" alt="Animation for RT-T">
-            </figure>
+            <div class="carousel results-carousel" data-autoplay-speed="10000">
+              <div class="item">
+                <figure class="image">
+                  <img src="static/img/rt1_vs_rtt.gif" alt="RT-1 vs. RT-Trajectory">
+                </figure>
+                <div class="content">
+                  RT-1 vs. RT-Trajectory
+                </div>
+              </div>
+              <div class="item">
+                <figure class="image">
+                  <img src="static/img/RT-T-UI.gif" alt="RT-Trajectory UI">
+                </figure>
+                <div class="content has-text-justified">
+                  RT-Trajectory can take trajectory sketches generated from different methods as input.
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="columns is-centered">
-          <div class="column is-9 has-text-centered">
+          <div class="column is-4 has-text-centered">
             <div class="content has-text-justified is-size-6">
               <p>
                 Language-conditioned policies like <a href="https://robotics-transformer1.github.io/">RT-1</a> struggle to generalize to new scenarios that require extrapolation of language specifications. To this end, we propose <b>RT-Trajectory</b>, a robotic control policy conditioned on trajectory sketches: a novel conditioning method which is practical, easy to specify, and allows effective generalization to novel tasks beyond the training data.
