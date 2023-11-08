@@ -51,8 +51,3 @@ display: inline-block;
 .tt {
   font-family: "Lucida Console", "Menlo", "Monaco", "Courier", monospace;
 }
-
-.hljs {
-  overflow-y: auto;
-  max-height: 256px;
-}
